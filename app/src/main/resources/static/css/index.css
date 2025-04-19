@@ -22,9 +22,3 @@ body {
 .img-banners {
     border-radius: 20px
 }
-
-.primary-color {
-    background-color: #2381AD !important;
-    color: #FFF !important;
-    letter-spacing: 1px;
-}

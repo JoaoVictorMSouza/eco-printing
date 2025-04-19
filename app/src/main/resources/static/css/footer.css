@@ -5,13 +5,8 @@
     color: #FFF;
     text-shadow: #ffffffcb;
     letter-spacing: 1px;
-}
 
-.logo img {
-    width: 200px;
-}
-
-.primary-text-color {
-    color: #2381AD;
-    letter-spacing: 1px;;
+    .logo img {
+        width: 200px;
+    }
 }

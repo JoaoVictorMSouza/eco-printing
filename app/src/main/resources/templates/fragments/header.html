@@ -11,7 +11,9 @@
                 Nossa missão
             </div>
             <div>
+              <a class="text-decoration-none white-text-color" th:href="${usuarioLogado == null ? '/login' : '/usuario/' + usuarioLogado.id}">
                 Minha conta
+              </a>
             </div>
             <div>
                 Fazer minha doação

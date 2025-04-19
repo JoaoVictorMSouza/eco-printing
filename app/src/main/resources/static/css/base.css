@@ -1,0 +1,21 @@
+.background-secondary-color {
+    background-color: #09483D !important;
+}
+
+.background-primary-color {
+    background-color: #2381AD !important;
+}
+
+.background-white-color {
+    background-color: #FFF !important;
+}
+
+.white-text-color {
+    letter-spacing: 1px;
+    font-family: fantasy;
+    color: #FFF !important;
+}
+
+.primary-text-color {
+    color: #2381AD;
+}
