@@ -1,0 +1,16 @@
+.header {
+    width: 130px;
+    /* background: #FFF;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(70, 70, 70, 1) 100%); */
+    /* background: #FFF; */
+    background: linear-gradient(0deg, transparent, #c4c4c4 20%, #474747 100%);
+
+    font-family: fantasy;
+    color: #FFF;
+    text-shadow: #ffffffcb;
+    letter-spacing: 1px;
+}
+
+.logo img {
+    width: 130px;
+}
