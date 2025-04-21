@@ -30,3 +30,44 @@ function consultarCep(cep) {
             return undefined;
         });
 }
+
+function validarEndereco() {
+    let cepEntrega = document.getElementById("cep").value;
+    let logradouroEntrega = document.getElementById("logradouro").value;
+    let numeroEntrega = document.getElementById("numero").value;
+    let bairroEntrega = document.getElementById("bairro").value;
+    let cidadeEntrega = document.getElementById("cidade").value;
+    let ufEntrega = document.getElementById("uf").value;
+
+    if (cepEntrega === "") {
+        abrirToastErro("CEP de entrega é obrigatório.");
+        return false;
+    }
+
+    if (logradouroEntrega === "") {
+        abrirToastErro("Logradouro de entrega é obrigatório.");
+        return false;
+    }
+
+    if (numeroEntrega === "") {
+        abrirToastErro("Número de entrega é obrigatório.");
+        return false;
+    }
+
+    if (bairroEntrega === "") {
+        abrirToastErro("Bairro de entrega é obrigatório.");
+        return false;
+    }
+
+    if (cidadeEntrega === "") {
+        abrirToastErro("Cidade de entrega é obrigatório.");
+        return false;
+    }
+
+    if (ufEntrega === "") {
+        abrirToastErro("UF de entrega é obrigatório.");
+        return false;
+    }
+
+    return true;
+}

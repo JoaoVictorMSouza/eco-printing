@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import com.ecoprinting.app.dto.UsuarioLogadoDTO;
 import com.ecoprinting.app.entity.UsuarioEntity;
+import com.ecoprinting.app.enums.UsuarioGrupoEnum;
 import com.ecoprinting.app.repository.interfaces.IUsuarioRepository;
 import com.ecoprinting.app.service.interfaces.IAutenticacaoService;
 import org.springframework.security.core.Authentication;
@@ -29,9 +30,13 @@ public class AutenticacaoService implements IAutenticacaoService {
             throw new UsernameNotFoundException("Usuário não encontrado com o e-mail: " + email);
         }
 
+        UsuarioGrupoEnum usuarioGrupo = UsuarioGrupoEnum.fromId(usuario.getIdGrupo());
+
         return User.builder()
                 .username(usuario.getDsEmail())
                 .password(usuario.getDsSenha())
+                .disabled(!usuario.isAtivo())
+                .roles(usuarioGrupo.name().toUpperCase())
                 .build();
     }
 

@@ -13,17 +13,12 @@
               </a>
             </div>
             <div>
-              <a class="text-decoration-none white-text-color" th:href="${usuarioLogado == null ? '/login' : '/usuario/' + usuarioLogado.id}">
+              <a class="text-decoration-none white-text-color" th:href="${usuarioLogado == null ? '/login' : '/usuario/editar/' + usuarioLogado.id}">
                 Minha conta
               </a>
             </div>
-            <div>
-              <a class="text-decoration-none white-text-color" th:href="@{/usuario/editar/1}">
-                EDITAR (REMOVER DEPOIS)
-              </a>
-            </div>
           </div>
-          <div class="col d-flex justify-content-end align-items-center">
+          <div class="col d-flex justify-content-end align-items-center" th:if="${usuarioLogado != null and usuarioLogado.grupo == 'ADMIN'}">
             <a class="text-decoration-none white-text-color" th:href="@{/doacao}">
               Gerenciar
             </a>
