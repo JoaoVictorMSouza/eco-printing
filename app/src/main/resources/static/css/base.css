@@ -19,3 +19,10 @@
 .primary-text-color {
     color: #2381AD;
 }
+
+.line-separetor {
+    border-bottom: #474747 1px solid;
+    width: 100%;
+    margin: 0 auto;
+    height: 1px;
+}

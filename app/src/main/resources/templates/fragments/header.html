@@ -8,7 +8,9 @@
           </div>
           <div class="col-6 d-flex justify-content-center align-items-center gap-5">
             <div>
+              <a class="text-decoration-none white-text-color" th:href="@{/#quem-somos}">
                 Nossa missão
+              </a>
             </div>
             <div>
               <a class="text-decoration-none white-text-color" th:href="${usuarioLogado == null ? '/login' : '/usuario/' + usuarioLogado.id}">
@@ -16,8 +18,15 @@
               </a>
             </div>
             <div>
-                Fazer minha doação
+              <a class="text-decoration-none white-text-color" th:href="@{/usuario/editar/1}">
+                EDITAR (REMOVER DEPOIS)
+              </a>
             </div>
+          </div>
+          <div class="col d-flex justify-content-end align-items-center">
+            <a class="text-decoration-none white-text-color" th:href="@{/doacao}">
+              Gerenciar
+            </a>
           </div>
         </div>
       </div>
