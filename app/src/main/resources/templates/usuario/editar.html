@@ -33,21 +33,11 @@
                 </div>
                 <div class="form-group">
                     <label for="cpf">CPF:</label>
-                    <input type="text" class="form-control" id="cpf" th:field="*{cpf}" onblur="validarCPF(this.value)" />
+                    <input type="text" class="form-control" id="cpf" th:field="*{cpf}" onblur="validarCPF(this.value)" disabled />
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" th:field="*{email}" />
-                </div>
-                <div class="row">
-                    <div class="form-group col-6">
-                        <label for="senha">Senha:</label>
-                        <input type="password" class="form-control" id="senha" th:field="*{senha}" />
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="confirmacaoSenha">Confirmar senha:</label>
-                        <input type="password" class="form-control" id="confirmacaoSenha" th:field="*{confirmacaoSenha}" />
-                    </div>
+                    <input type="email" class="form-control" id="email" th:field="*{email}" disabled />
                 </div>
                 <div class="row">
                     <div class="col">
@@ -64,43 +54,42 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="data-nascimento">Data de Nascimento:</label>
-                            <input type="date" class="form-control" id="data-nascimento" th:field="*{dataNascimento}" />
+                            <input type="date" class="form-control" id="data-nascimento" th:field="*{dataNascimentoFront}" th:value="${#dates.format(usuario.dataNascimentoFront, 'yyyy-MM-dd')}" />
                         </div>
                     </div>
                 </div>
     
                 <input type="hidden" th:field="*{id}" id="id-usuario" />
     
-                <div th:each="enderecoEntrega : ${listaEnderecoEntrega}" class="endereco p-3 shadow rounded mb-2">
+                <div th:each="endereco : ${listaEndereco}" class="endereco p-3 shadow rounded mb-2">
                     <div class="row">
-    
                         <div class="col">
                             <div class="form-group">
-                                <label for="cep-entrega">CEP:</label>
+                                <label for="cep">CEP:</label>
                                 <div class="input-group">
-                                    <input type="text" id="cep-entrega" inputmode="numeric" mask="99999-999" class="form-control cep" placeholder="CEP" th:value="${enderecoEntrega.cep}" disabled>
+                                    <input type="text" id="cep" inputmode="numeric" mask="99999-999" class="form-control cep" placeholder="CEP" th:value="${endereco.cep}" onclick="consultarCepUsuario()" onblur="consultarCepUsuario()" />
                                 </div>
                             </div>
                         </div>
                     </div>
     
                     <div class="form-group">
-                        <label for="logradouro-entrega">Logradouro:</label>
-                        <input type="text" class="form-control" id="logradouro-entrega" th:value="${enderecoEntrega.logradouro}" disabled />
+                        <label for="logradouro">Logradouro:</label>
+                        <input type="text" class="form-control" id="logradouro" th:value="${endereco.logradouro}" disabled />
                     </div>
     
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="bairro-entrega">Bairro:</label>
-                                <input type="text" class="form-control" id="bairro-entrega" th:value="${enderecoEntrega.bairro}" disabled />
+                                <label for="bairro">Bairro:</label>
+                                <input type="text" class="form-control" id="bairro" th:value="${endereco.bairro}" disabled />
                             </div>
                         </div>
     
                         <div class="col">
                             <div class="form-group">
-                                <label for="numero-entrega">Número:</label>
-                                <input type="text" class="form-control" id="numero-entrega" th:value="${enderecoEntrega.numero}" disabled />
+                                <label for="numero">Número:</label>
+                                <input type="text" class="form-control" id="numero" th:value="${endereco.numero}" />
                             </div>
                         </div>
                     </div>
@@ -108,27 +97,29 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="cidade-entrega">Cidade:</label>
-                                <input type="text" class="form-control" id="cidade-entrega" th:value="${enderecoEntrega.cidade}" disabled />
+                                <label for="cidade">Cidade:</label>
+                                <input type="text" class="form-control" id="cidade" th:value="${endereco.cidade}" disabled />
                             </div>
                         </div>
     
                         <div class="col">
                             <div class="form-group">
-                                <label for="uf-entrega">UF:</label>
-                                <input type="text" class="form-control" id="uf-entrega" th:value="${enderecoEntrega.uf}" disabled />
+                                <label for="uf">UF:</label>
+                                <input type="text" class="form-control" id="uf" th:value="${endereco.uf}" disabled />
                             </div>
                         </div>
                     </div>
     
                     <div class="form-group">
-                        <label for="complemento-entrega">Complemento:</label>
-                        <input type="text" class="form-control" id="complemento-entrega" th:value="${enderecoEntrega.complemento}" disabled />
+                        <label for="complemento">Complemento:</label>
+                        <input type="text" class="form-control" id="complemento" th:value="${endereco.complemento}" />
                     </div>
+
+                    <input type="hidden" name="id-endereco" id="id-endereco" th:value="${endereco.idEndereco}" />
                 </div>
 
                 <div class="row justify-content-end w-100 mx-0 mt-3">
-                    <button type="submit" class="btn background-primary-color white-text-color col-2">Editar</button>
+                    <button type="submit" id="btn-editar" class="btn background-primary-color white-text-color col-2">Editar</button>
                 </div>
             </form>
         </div>

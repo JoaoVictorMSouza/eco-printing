@@ -57,10 +57,35 @@ function stringToDate(dateString) {
 $(document).ready(function () {
     $('#formulario-criar-usuario').submit(async function(e) {
         e.preventDefault();
-        debugger;
+
         let isInformacoesValidas = await validarInformacoesCriarUsuario();
+
         if (isInformacoesValidas) {
             criarUsuario();
+        }
+    });
+});
+
+$(document).on("keydown", "form", function(event) { 
+    return event.key != "Enter";
+});
+
+$(document).ready(function () {
+    $('#formulario-editar-usuario').submit(async function(e) {
+        e.preventDefault();
+
+        var idUsuario = $("#id-usuario").val();
+
+        let isInformacoesUsuarioValidas = await validarInformacoesEditarUsuario();
+
+        let isInformacoesEnderecoValidas = validarEndereco();
+
+        if (isInformacoesUsuarioValidas && isInformacoesEnderecoValidas) {
+            var statusEditarUsuario = await editarUsuario();
+            var statusEditarEndereco = await editarEndereco();
+            if(statusEditarUsuario && statusEditarEndereco) {
+                window.location.href = "/usuario/editar/" + idUsuario;
+            }
         }
     });
 });
@@ -155,6 +180,40 @@ async function validarInformacoesCriarUsuario(){
     }
 }
 
+async function validarInformacoesEditarUsuario(){
+    try {
+        fecharToast();
+
+        let nome = document.getElementById("nome").value;
+        let genero = document.getElementById("genero-usuario").value;
+        let dataNascimento = document.getElementById("data-nascimento").value;
+    
+        if (nome === ""){
+            abrirToastErro("Nome é obrigatório.");
+            return false;
+        }
+    
+        if (genero === "" || Number(genero) <= 0){
+            abrirToastErro("Gênero é obrigatório.");
+            return false;
+        }
+
+        if (dataNascimento === ""){
+            abrirToastErro("Data de nascimento é obrigatória.");
+            return false;
+        }
+
+        if (stringToDate(dataNascimento) > new Date()) {
+            abrirToastErro("Data de nascimento inválida.");
+            return false;
+        }
+    
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+
 function criarUsuario() {
     let endereco = {
         cep: $("#cep").val(),
@@ -201,4 +260,36 @@ function criarUsuario() {
             }
         }
     });
+}
+
+async function editarUsuario() {
+    let usuario = {
+        id: $("#id-usuario").val(),
+        nome: $("#nome").val(),
+        idGeneroUsuario: $("#genero-usuario").val(),
+        dataNascimento: stringToDate($("#data-nascimento").val())
+    }
+
+    try {
+        const response = await fetch("/usuario/editar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(usuario)
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.status === "OK") {
+            return true;
+        } else {
+            abrirToastErro(data.mensagem || "Erro ao editar usuário.");
+        }
+
+        return false;
+    } catch (error) {
+        abrirToastErro(error.message || "Erro ao editar usuário.");
+        return false;
+    }
 }

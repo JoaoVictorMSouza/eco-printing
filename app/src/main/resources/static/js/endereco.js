@@ -11,6 +11,11 @@ async function consultarCepUsuario() {
             document.getElementById("bairro").value = endereco.bairro;
             document.getElementById("cidade").value = endereco.localidade;
             document.getElementById("uf").value = endereco.uf;
+        } else {
+            document.getElementById("logradouro").value = "";
+            document.getElementById("bairro").value = "";
+            document.getElementById("cidade").value = "";
+            document.getElementById("uf").value = "";
         }
     }
 }
@@ -70,4 +75,41 @@ function validarEndereco() {
     }
 
     return true;
+}
+
+async function editarEndereco() {
+    let endereco = {
+        idUsuario: $("#id-usuario").val(),
+        idEndereco: $("#id-endereco").val(),
+        cep: $("#cep").val(),
+        logradouro: $("#logradouro").val(),
+        numero: $("#numero").val(),
+        complemento: $("#complemento").val(),
+        bairro: $("#bairro").val(),
+        cidade: $("#cidade").val(),
+        uf: $("#uf").val()
+    }
+
+    try {
+        const response = await fetch("/endereco/editar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(endereco)
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.status === "OK") {
+            return true;
+        } else {
+            abrirToastErro(data.mensagem || "Erro ao editar endereço.");
+        }
+
+        return false;
+    } catch (error) {
+        abrirToastErro(error.message || "Erro ao editar endereço.");
+        return false;
+    }
 }
