@@ -4,9 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import com.ecoprinting.app.dto.UsuarioLogadoDTO;
-import com.ecoprinting.app.entity.UsuarioEntity;
+
 import com.ecoprinting.app.enums.UsuarioGrupoEnum;
+import com.ecoprinting.app.models.dto.UsuarioLogadoDTO;
+import com.ecoprinting.app.models.entity.UsuarioEntity;
 import com.ecoprinting.app.repository.interfaces.IUsuarioRepository;
 import com.ecoprinting.app.service.interfaces.IAutenticacaoService;
 import org.springframework.security.core.Authentication;

@@ -1,8 +1,9 @@
-package com.ecoprinting.app.dto;
+package com.ecoprinting.app.models.dto;
 
 import org.springframework.security.core.userdetails.UserDetails;
-import com.ecoprinting.app.entity.UsuarioEntity;
+
 import com.ecoprinting.app.enums.UsuarioGrupoEnum;
+import com.ecoprinting.app.models.entity.UsuarioEntity;
 import com.ecoprinting.app.utils.AutenticacaoUtils;
 
 public class UsuarioLogadoDTO {

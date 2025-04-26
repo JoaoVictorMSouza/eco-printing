@@ -1,10 +1,11 @@
-package com.ecoprinting.app.dto;
+package com.ecoprinting.app.models.dto;
 
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.ecoprinting.app.enums.GeneroEnum;
+
 import java.util.ArrayList;
 import java.util.Date;
 

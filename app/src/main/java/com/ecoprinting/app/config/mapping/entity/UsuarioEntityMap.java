@@ -2,8 +2,8 @@ package com.ecoprinting.app.config.mapping.entity;
 
 import org.modelmapper.PropertyMap;
 
-import com.ecoprinting.app.dto.UsuarioDTO;
-import com.ecoprinting.app.entity.UsuarioEntity;
+import com.ecoprinting.app.models.dto.UsuarioDTO;
+import com.ecoprinting.app.models.entity.UsuarioEntity;
 
 public class UsuarioEntityMap extends PropertyMap<UsuarioDTO, UsuarioEntity> {
     @Override

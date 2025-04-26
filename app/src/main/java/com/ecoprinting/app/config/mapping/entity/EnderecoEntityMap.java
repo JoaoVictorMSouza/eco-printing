@@ -2,8 +2,8 @@ package com.ecoprinting.app.config.mapping.entity;
 
 import org.modelmapper.PropertyMap;
 
-import com.ecoprinting.app.entity.EnderecoEntity;
-import com.ecoprinting.app.dto.EnderecoDTO;
+import com.ecoprinting.app.models.dto.EnderecoDTO;
+import com.ecoprinting.app.models.entity.EnderecoEntity;
 
 public class EnderecoEntityMap extends PropertyMap<EnderecoDTO, EnderecoEntity> {
     @Override

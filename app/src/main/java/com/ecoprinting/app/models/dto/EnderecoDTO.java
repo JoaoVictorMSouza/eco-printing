@@ -1,4 +1,4 @@
-package com.ecoprinting.app.dto;
+package com.ecoprinting.app.models.dto;
 
 public class EnderecoDTO {
     private int idEndereco;

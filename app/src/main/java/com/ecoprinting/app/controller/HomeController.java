@@ -4,7 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
-import com.ecoprinting.app.dto.UsuarioLogadoDTO;
+
+import com.ecoprinting.app.models.dto.UsuarioLogadoDTO;
 import com.ecoprinting.app.service.interfaces.IAutenticacaoService;
 import jakarta.servlet.http.HttpSession;
 

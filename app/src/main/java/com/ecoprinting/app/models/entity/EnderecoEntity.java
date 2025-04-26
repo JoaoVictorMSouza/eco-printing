@@ -1,4 +1,4 @@
-package com.ecoprinting.app.entity;
+package com.ecoprinting.app.models.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
