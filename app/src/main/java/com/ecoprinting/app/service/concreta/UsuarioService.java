@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.ecoprinting.app.dto.UsuarioDTO;
-import com.ecoprinting.app.entity.EnderecoEntity;
-import com.ecoprinting.app.entity.UsuarioEntity;
 import com.ecoprinting.app.enums.UsuarioGrupoEnum;
-import com.ecoprinting.app.exception.UsuarioException;
+import com.ecoprinting.app.exception.models.UsuarioException;
+import com.ecoprinting.app.models.dto.UsuarioDTO;
+import com.ecoprinting.app.models.entity.EnderecoEntity;
+import com.ecoprinting.app.models.entity.UsuarioEntity;
 import com.ecoprinting.app.repository.interfaces.IUsuarioRepository;
 import com.ecoprinting.app.service.interfaces.IUsuarioService;
 import com.ecoprinting.app.utils.CpfUtils;
