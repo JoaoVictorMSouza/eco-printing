@@ -66,10 +66,6 @@ $(document).ready(function () {
     });
 });
 
-$(document).on("keydown", "form", function(event) { 
-    return event.key != "Enter";
-});
-
 $(document).ready(function () {
     $('#formulario-editar-usuario').submit(async function(e) {
         e.preventDefault();
