@@ -12,7 +12,7 @@
     <div th:insert="~{fragments/header :: header}"></div>
 
     <main class="d-flex flex-grow-1 flex-column align-items-center col mt-3">
-        <form action="#" th:action="@{/usuario/criar}" method="post" class="mb-5 w-75 p-3 shadow rounded background-secondary-color white-text-color" id="formulario-criar-usuario">
+        <form action="#" th:action="@{/doacao/criar}" method="post" class="mb-5 w-75 p-3 shadow rounded background-secondary-color white-text-color" id="formulario-doacao-usuario">
             <div class="row mb-5">
                 <div class="col">
                     <div class="form-group">
@@ -25,34 +25,33 @@
                 </div>
             </div>
 
-            <div class="container p-3 shadow">
-                <div class="form-group">
-                    <label for="nome">Nome:</label>
-                    <input type="text" class="form-control" id="nome" disabled />
+            <div style="display: none;" id="infos-usuario">
+                <div class="container p-3 shadow">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" class="form-control" id="nome" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" disabled />
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="cpf">CPF:</label>
-                    <input type="text" class="form-control" id="cpf" disabled />
+
+                <div class="form-control my-3">
+                    <div>
+                        <label for="range-doacao" class="form-label">Qtd. kg Doados:</label>
+                        <span id="valor-doacao" class="form-label">0</span>
+                    </div>
+                    <input type="range" class="form-range" id="range-doacao" value="0">
                 </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" disabled />
+    
+                <input type="hidden" class="form-control" id="id-usuario" name="id-usuario" />
+    
+                <div class="row justify-content-end w-100 mx-0 mt-4">
+                    <button type="submit" class="btn background-primary-color white-text-color col-2">Efetivar doação</button>
                 </div>
             </div>
 
-            <div class="form-control my-3">
-                <div>
-                    <label for="range-doacao" class="form-label">Qtd. kg Doados:</label>
-                    <span id="valor-doacao" class="form-label">0</span>
-                </div>
-                <input type="range" class="form-range" id="range-doacao" value="0">
-            </div>
-
-            <input type="hidden" class="form-control" id="id-usuario" name="id-usuario" />
-
-            <div class="row justify-content-end w-100 mx-0 mt-4">
-                <button type="submit" class="btn background-primary-color white-text-color col-2">Efetivar doação</button>
-            </div>
         </form>
 
         <div class="toast-container p-3 bottom-0 end-0" th:insert="~{fragments/toastErro}"></div>
@@ -67,9 +66,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <!-- Adicionar o arquivo com as funções do toast -->
     <script src="/js/toast.js"></script>
-    <!-- Adicionar o arquivo com as funções de validação da informações do usuário -->
-    <script src="/js/usuario.js"></script>
 
     <script src="/js/doacao.js"></script>
+
+    <script src="/js/base.js"></script>
 </body>
 </html>

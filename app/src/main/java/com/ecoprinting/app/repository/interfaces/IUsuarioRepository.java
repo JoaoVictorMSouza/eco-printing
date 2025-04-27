@@ -7,4 +7,5 @@ import com.ecoprinting.app.models.entity.UsuarioEntity;
 public interface IUsuarioRepository extends JpaRepository<UsuarioEntity, Integer> {
     UsuarioEntity findByDsEmail(String email);
     UsuarioEntity findByIdUsuario(int id);
+    UsuarioEntity findByDsCpf(String cpf);
 }

@@ -139,4 +139,16 @@ public class UsuarioService implements IUsuarioService {
 
         usuarioRepository.save(usuarioEntity);
     }
+
+    public UsuarioDTO consultarUsuarioByCpf(String cpf) {
+        UsuarioEntity usuarioEntity = usuarioRepository.findByDsCpf(cpf);
+
+        if (usuarioEntity == null) {
+            return null;
+        }
+
+        UsuarioDTO usuarioDTO = this.mapearUsuarioEntityParaUsuarioDTO(usuarioEntity);
+
+        return usuarioDTO;
+    }
 }

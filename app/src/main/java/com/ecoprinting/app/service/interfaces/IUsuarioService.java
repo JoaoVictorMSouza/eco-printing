@@ -7,4 +7,5 @@ public interface IUsuarioService {
     boolean verificarExistenciaEmail(String email);
     UsuarioDTO buscarUsuarioPorId(int idUsuario);
     void editarUsuario(UsuarioDTO usuarioDTO);
+    UsuarioDTO consultarUsuarioByCpf(String cpf);
 }

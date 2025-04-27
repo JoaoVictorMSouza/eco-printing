@@ -19,12 +19,14 @@ public class UsuarioDTO {
     private int idGeneroUsuario;
     private GeneroEnum generoEnum;
     private List<EnderecoDTO> enderecos;
+    private List<DoacaoDTO> doacoes;
     private Date dataNascimento;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dataNascimentoFront;
 
     public UsuarioDTO() {
         this.enderecos = new ArrayList<>();
+        this.doacoes = new ArrayList<>();
     }
 
     public int getId() {
@@ -92,6 +94,13 @@ public class UsuarioDTO {
     }
     public void setEnderecos(List<EnderecoDTO> enderecos) {
         this.enderecos = enderecos;
+    }
+
+    public List<DoacaoDTO> getDoacoes() {
+        return doacoes;
+    }
+    public void setDoacoes(List<DoacaoDTO> doacoes) {
+        this.doacoes = doacoes;
     }
 
     public Date getDataNascimento() {

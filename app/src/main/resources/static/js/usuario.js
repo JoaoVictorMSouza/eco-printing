@@ -1,7 +1,3 @@
-$(document).ready(function(){
-    $('#cpf').mask('000.000.000-00');
-});
-
 function validarCPF(numeroCpf) {
     const cpf = numeroCpf.replace(/[^\d]+/g, '');
     if (cpf.length !== 11 || /^(\d)\1+$/.test(cpf)) {

@@ -1,9 +1,6 @@
 package com.ecoprinting.app.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.ecoprinting.app.exception.models.UsuarioException;
 import com.ecoprinting.app.models.dto.UsuarioDTO;
 import com.ecoprinting.app.models.dto.UsuarioLogadoDTO;
+import com.ecoprinting.app.models.entity.UsuarioEntity;
 import com.ecoprinting.app.service.interfaces.IAutenticacaoService;
 import com.ecoprinting.app.service.interfaces.IUsuarioService;
 
@@ -85,6 +82,8 @@ public class UsuarioController {
 
         model.addAttribute("listaEndereco", usuario.getEnderecos());
 
+        model.addAttribute("doacoes", usuario.getDoacoes());
+
         return "usuario/editar";
     }
     
@@ -104,5 +103,16 @@ public class UsuarioController {
             response.put("mensagem", e.getMessage());
             throw e;
         }
+    }
+
+    @GetMapping("/consultarUsuarioByCpf")
+    public ResponseEntity<Map<String, Object>> consultarUsuarioByCpf(@RequestParam String cpf) {
+        UsuarioDTO usuarioDTO = this.usuarioService.consultarUsuarioByCpf(cpf);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("valido", usuarioDTO != null);
+        response.put("usuario", usuarioDTO);
+        
+        return ResponseEntity.ok(response);
     }
 }
