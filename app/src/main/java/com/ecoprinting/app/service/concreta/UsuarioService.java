@@ -63,7 +63,7 @@ public class UsuarioService implements IUsuarioService {
            endereco.setIdEndereco(null);
         }
 
-        UsuarioEntity usuarioCadastrado = usuarioRepository.save(usuarioEntity);
+        usuarioRepository.save(usuarioEntity);
     }
 
     private UsuarioDTO mapearUsuarioEntityParaUsuarioDTO(UsuarioEntity usuarioEntity) {

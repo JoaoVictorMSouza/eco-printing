@@ -97,4 +97,11 @@ public class UsuarioEntity {
     public void setEnderecos(List<EnderecoEntity> enderecos) {
         this.enderecos = enderecos;
     }  
+
+    public List<DoacaoEntity> getDoacoes() {
+        return doacoes;
+    }
+    public void setDoacoes(List<DoacaoEntity> doacoes) {
+        this.doacoes = doacoes;
+    }
 }

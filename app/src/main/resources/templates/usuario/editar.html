@@ -15,10 +15,34 @@
         <h2>Minha conta</h2>
         <div class="w-75 background-secondary-color white-text-color rounded shadow p-3 mb-4">
             <div class="text-center">
+                <h4>Historico de doações</h4>
+            </div>
+            <div class="line-separetor"></div>
+            <div style="overflow-y: scroll; height: 150px;">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Qtd. Doado</th>
+                        <th scope="col">Data/Hora doação</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr th:each="doacao : ${listaDoacao}">
+                        <th scope="row" th:text="'# '+ ${doacao.idDoacao}"></th>
+                        <td th:text="${doacao.qtdDoacao}"></td>
+                        <td th:text="${#dates.format(doacao.dataDoacaoFront, 'dd/MM/yyyy HH:mm')}"></td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="w-75 background-secondary-color white-text-color rounded shadow p-3 mb-4">
+            <div class="text-center">
                 <h4>Minha conquistas</h4>
             </div>
             <div class="line-separetor"></div>
-
         </div>
 
         <div class="w-75 background-secondary-color white-text-color rounded shadow mb-5 p-3">

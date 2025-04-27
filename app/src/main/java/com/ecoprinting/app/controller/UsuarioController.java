@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.ecoprinting.app.exception.models.UsuarioException;
 import com.ecoprinting.app.models.dto.UsuarioDTO;
 import com.ecoprinting.app.models.dto.UsuarioLogadoDTO;
-import com.ecoprinting.app.models.entity.UsuarioEntity;
 import com.ecoprinting.app.service.interfaces.IAutenticacaoService;
 import com.ecoprinting.app.service.interfaces.IUsuarioService;
 
@@ -82,7 +81,7 @@ public class UsuarioController {
 
         model.addAttribute("listaEndereco", usuario.getEnderecos());
 
-        model.addAttribute("doacoes", usuario.getDoacoes());
+        model.addAttribute("listaDoacao", usuario.getDoacoes());
 
         return "usuario/editar";
     }
