@@ -25,7 +25,7 @@ public class SegurancaConfig {
         http
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/h2-console/**").permitAll()
-                .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**", "/resources/**").permitAll()
+                .requestMatchers("/css/**", "/js/**", "/images/**", "/webjars/**", "/resources/**", "/videos/**").permitAll()
                 .requestMatchers("/", "/home").permitAll()
                 .requestMatchers("/usuario/criar").permitAll()
                 .requestMatchers("/doacao/**").hasRole("ADMIN")
