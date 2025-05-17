@@ -4,4 +4,5 @@ import com.ecoprinting.app.models.dto.DoacaoDTO;
 
 public interface IDoacaoService {
     void efetuarDoacao(DoacaoDTO doacaoDTO);
+    void deletarDoacao(DoacaoDTO doacaoDTO);
 }

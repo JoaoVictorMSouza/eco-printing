@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.ecoprinting.app.exception.models.EnderecoException;
@@ -54,4 +55,21 @@ public class DoacaoController {
         }
     }
     
+    @DeleteMapping("/doacao")
+    public ResponseEntity<Map<String, String>> deletarDoacao(@RequestBody DoacaoDTO doacaoDTO) {
+        Map<String, String> response = new HashMap<>();
+
+        try {
+            this.doacaoService.deletarDoacao(doacaoDTO);
+
+            response.put("status", "OK");
+
+            return ResponseEntity.ok(response);
+        } catch (EnderecoException e) {
+            System.out.println(e.getMessage());
+            response.put("status", "ERROR");
+            response.put("mensagem", e.getMessage());
+            throw e;
+        }
+    }
 }

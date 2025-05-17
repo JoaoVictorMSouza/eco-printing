@@ -42,4 +42,19 @@ public class DoacaoService implements IDoacaoService {
 
         doacaoRepository.save(doacaoEntity);
     }
+
+    public void deletarDoacao(DoacaoDTO doacaoDTO) {
+        UsuarioEntity usuario = usuarioRepository.findByIdUsuario(doacaoDTO.getIdUsuario());
+        if (usuario == null) {
+            throw new DoacaoException("Usuário não encontrado.");
+        }
+
+        DoacaoEntity doacao = doacaoRepository.findByIdDoacaoAndUsuario(doacaoDTO.getIdDoacao(), usuario);
+
+        if (doacao == null) {
+            throw new DoacaoException("Doação não encontrada.");
+        }
+
+        doacaoRepository.delete(doacao);
+    }
 }
