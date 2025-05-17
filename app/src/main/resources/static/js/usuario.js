@@ -264,7 +264,7 @@ async function editarUsuario() {
 
     try {
         const response = await fetch("/usuario/editar", {
-            method: "POST",
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },

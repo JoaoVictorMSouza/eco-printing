@@ -92,7 +92,7 @@ async function editarEndereco() {
 
     try {
         const response = await fetch("/endereco/editar", {
-            method: "POST",
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },

@@ -19,6 +19,8 @@ import com.ecoprinting.app.models.dto.UsuarioDTO;
 import com.ecoprinting.app.models.dto.UsuarioLogadoDTO;
 import com.ecoprinting.app.service.interfaces.IAutenticacaoService;
 import com.ecoprinting.app.service.interfaces.IUsuarioService;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @Controller
 @RequestMapping("/usuario")
@@ -86,7 +88,7 @@ public class UsuarioController {
         return "usuario/editar";
     }
     
-    @PostMapping("/editar")
+    @PutMapping("/editar")
     public ResponseEntity<Map<String, String>> editarUsuario(@RequestBody UsuarioDTO usuarioDTO) {
         Map<String, String> response = new HashMap<>();
 
