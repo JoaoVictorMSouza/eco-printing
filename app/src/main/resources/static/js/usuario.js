@@ -276,12 +276,12 @@ async function editarUsuario() {
         if (response.ok && data.status === "OK") {
             return true;
         } else {
-            abrirToastErro(data.mensagem || "Erro ao editar usuário.");
+            abrirToastErro("Erro ao editar usuário.");
         }
 
         return false;
     } catch (error) {
-        abrirToastErro(error.message || "Erro ao editar usuário.");
+        abrirToastErro("Erro ao editar usuário.");
         return false;
     }
 }

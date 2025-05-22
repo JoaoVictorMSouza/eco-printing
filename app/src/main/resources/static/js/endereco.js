@@ -104,12 +104,16 @@ async function editarEndereco() {
         if (response.ok && data.status === "OK") {
             return true;
         } else {
-            abrirToastErro(data.mensagem || "Erro ao editar endereço.");
+            if (data.mensagem) {
+                abrirToastErro(data.mensagem);
+            } else {
+                abrirToastErro("Erro ao editar endereço.");
+            }
         }
 
         return false;
     } catch (error) {
-        abrirToastErro(error.message || "Erro ao editar endereço.");
+        abrirToastErro(error.responseText);
         return false;
     }
 }

@@ -27,12 +27,16 @@ async function consultarCpfUsuario() {
       
       return true;
     } else {
-      abrirToastErro(error.message || "Usuário não encontrado");
+      if (data.mensagem) {
+        abrirToastErro(data.mensagem);
+      } else {
+        abrirToastErro("Usuário não encontrado.");
+      }
     }
 
     return false; 
   } catch (error) {
-    abrirToastErro(error.message || "Erro ao consultar o usuário");
+    abrirToastErro(error.responseText);
   }
 }
 
@@ -88,12 +92,16 @@ async function removerDoacao(idDoacao) {
       limparDoacaoGerenciamento()
       alert("Doação removida com sucesso!");
     } else {
-      limparDoacaoGerenciamento()
-      abrirToastErro(data.mensagem || "Erro ao remover a doação.");
+      limparDoacaoGerenciamento();
+      if (data.mensagem) {
+        abrirToastErro(data.mensagem);
+      } else {
+        abrirToastErro("Erro ao remover a doação.");
+      }
     }
   } catch (error) {
-    limparDoacaoGerenciamento()
-    abrirToastErro(error.message || "Erro ao remover a doação.");
+    limparDoacaoGerenciamento();
+    abrirToastErro(error.responseText);
   }
 
 }
@@ -124,12 +132,16 @@ async function efetuarDoacao() {
       limparDoacaoGerenciamento()
       alert("Doação efetuada com sucesso!");
     } else {
-      limparDoacaoGerenciamento()
-      abrirToastErro(data.mensagem || "Erro ao efetuar a doação.");
+      limparDoacaoGerenciamento();
+      if (data.mensagem) {
+        abrirToastErro(data.mensagem);
+      } else {
+        abrirToastErro("Erro ao efetuar a doação.");
+      }
     }
   } catch (error) {
-    limparDoacaoGerenciamento()
-    abrirToastErro(error.message || "Erro ao efetuar a doação.");
+    limparDoacaoGerenciamento();
+    abrirToastErro(error.responseText);
   }
 }
 
