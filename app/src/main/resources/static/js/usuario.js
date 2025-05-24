@@ -285,3 +285,18 @@ async function editarUsuario() {
         return false;
     }
 }
+
+function deslogar() {
+    $.ajax({
+        url: "/logout",
+        type: "POST",
+        success: function(data) {
+            window.location.href = "/home";
+        },
+        error: function(data) {
+            if (data.responseText) {
+                abrirToastErro(data.responseText);
+            }
+        }
+    });
+}

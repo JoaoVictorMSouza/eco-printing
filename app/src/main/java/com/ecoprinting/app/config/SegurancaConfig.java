@@ -29,7 +29,7 @@ public class SegurancaConfig {
                 .requestMatchers("/", "/home").permitAll()
                 .requestMatchers("/usuario/criar").permitAll()
                 .requestMatchers("/doacao/**").hasRole("ADMIN")
-                .requestMatchers("/usuario/**").hasAnyRole("ADMIN", "COMUM")
+                .requestMatchers("/usuario/**", "/logout").hasAnyRole("ADMIN", "COMUM")
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
@@ -38,7 +38,7 @@ public class SegurancaConfig {
                 .permitAll()
             )
             .logout(logout -> logout
-                .logoutSuccessUrl("/login?logout")
+                .logoutSuccessUrl("/home")
                 .permitAll()
             )
             .csrf(csrf -> csrf.disable())
