@@ -154,4 +154,5 @@ function limparDoacaoGerenciamento() {
   document.getElementById("nome").value = "";
   document.getElementById("email").value = "";
   document.getElementById("range-doacao").value = 0;
+  output.innerHTML = 0;
 }
