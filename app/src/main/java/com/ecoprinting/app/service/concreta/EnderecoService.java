@@ -35,18 +35,31 @@ public class EnderecoService implements IEnderecoService {
             throw new EnderecoException("Endereço não encontrado");
         }
 
+        boolean isAlterado = false;
+
         if (enderecoDTO.getCep() != null && 
             !enderecoDTO.getCep().trim().isEmpty() && 
             !enderecoEntity.getDsCep().equals(enderecoDTO.getCep())) {
 
             enderecoEntity.setDsCep(enderecoDTO.getCep()); 
             enderecoEntity.setDsLogradouro(enderecoDTO.getLogradouro()); 
-            enderecoEntity.setDsNumero(enderecoDTO.getNumero()); 
-            enderecoEntity.setDsComplemento(enderecoDTO.getComplemento()); 
+            enderecoEntity.setDsNumero(enderecoDTO.getNumero());
             enderecoEntity.setDsBairro(enderecoDTO.getBairro()); 
             enderecoEntity.setDsCidade(enderecoDTO.getCidade()); 
             enderecoEntity.setDsUf(enderecoDTO.getUf()); 
 
+            isAlterado = true;
+        }
+
+        if (enderecoDTO.getComplemento() != null && 
+            !enderecoDTO.getComplemento().trim().isEmpty() && 
+            !enderecoEntity.getDsComplemento().equals(enderecoDTO.getComplemento())) {
+
+            enderecoEntity.setDsComplemento(enderecoDTO.getComplemento()); 
+            isAlterado = true;
+        }
+
+        if (isAlterado) {
            enderecoRepository.save(enderecoEntity);
         }
     }
